@@ -1,0 +1,10 @@
+<% if @review.persisted? %>
+  var new_review = $('<%= j render "review", review: @review %>').hide();
+  $('#reviews').append(new_review);
+  new_review.slideDown();
+  $('#review_content').val('');
+  $('#reviews_count').html('<%= j render "restaurants/reviews_count", restaurant: @restaurant %>')
+  $('#no_reviews').remove();
+<% else %>
+  $('#review_form_container').html('<%= j render 'reviews/form', restaurant: @restaurant, review: @review %>')
+<% end %>
